@@ -1,0 +1,159 @@
+
+Software Requirements Specification (SRS) for Online Project Management System
+
+Introduction
+1.1 Purpose
+The purpose of the online project management system is to provide a platform for managing projects, tasks, and resources efficiently.
+It enables collaboration among team members, tracking project progress, and generating reports for analysis and decision-making.
+
+1.2 Scope
+The online project management system will include features such as project creation, task assignment, progress tracking,
+resource management, team collaboration, and reporting. It will cater to both individual users and teams working on various
+projects simultaneously.
+
+Functional Requirements
+2.1 User Registration and Authentication
+
+Users can register by providing their name, email address, and password.
+The system validates user input and ensures unique email addresses for each account.
+Users can log in to their accounts using their email address and password.
+The system authenticates user credentials and grants access to the system's features.
+2.2 Project Creation and Management
+
+Users can create new projects by specifying project details such as name, description, start date, and end date.
+The system assigns a unique identifier (Project ID) to each project for easy reference.
+Users can update project details, including modifying dates or adding project-related documents.
+2.3 Task Assignment and Tracking
+
+Users can create tasks within projects, assigning them to specific team members.
+Each task will have attributes such as name, description, priority, due date, and status.
+Users can track the progress of tasks, mark them as complete, and update their status.
+2.4 Resource Management
+
+The system allows users to manage project resources, including personnel, equipment, and materials.
+Users can assign resources to specific tasks or projects, indicating their availability and estimated cost.
+The system tracks resource utilization and availability to prevent overallocation.
+2.5 Team Collaboration
+
+Users can invite team members to join projects, assigning them specific roles and permissions.
+The system provides communication tools for team members to collaborate, exchange messages, and share files.
+Users can receive notifications about project updates, task assignments, and deadlines.
+2.6 Reporting and Analytics
+
+The system generates reports, including project progress, task completion status, resource utilization, and budget analysis.
+Users can access graphical representations of project data to analyze performance and make informed decisions.
+Non-functional Requirements
+3.1 Performance
+
+The system should handle concurrent user requests efficiently, ensuring fast response times and minimal downtime.
+It should support a large number of users, projects, tasks, and resources simultaneously.
+3.2 Security
+
+User authentication and data transmission should be secure to prevent unauthorized access and data breaches.
+The system should implement role-based access control to ensure appropriate permissions for different user roles.
+3.3 User Interface
+
+The user interface should be intuitive, user-friendly, and responsive across different devices and screen sizes.
+It should provide a seamless and efficient user experience for project management tasks.
+3.4 Reliability
+
+The system should be reliable, ensuring data integrity, availability, and backup mechanisms to prevent data loss.
+3.5 Scalability
+
+The system should be designed to handle future growth in terms of user base, projects, tasks, and resources.
+It should be scalable to accommodate increasing demands and additional features.
+Business Entities:
+
+User
+
+Attributes: UserID, Name, Email, Password
+Project
+
+Attributes: ProjectID, Name, Description, StartDate, EndDate
+Task
+
+Attributes: TaskID, ProjectID, Name, Description, Priority, DueDate, Status
+Resource
+
+Attributes: ResourceID, Name, Description, Availability, EstimatedCost
+Team
+
+Attributes: TeamID
+, ProjectID, UserID, Role
+
+MySQL Database Tables:
+
+User
+
+Columns: UserID (Primary Key), Name, Email, Password
+Project
+
+Columns: ProjectID (Primary Key), Name, Description, StartDate, EndDate
+Task
+
+Columns: TaskID (Primary Key), ProjectID (Foreign Key), Name, Description, Priority, DueDate, Status
+Resource
+
+Columns: ResourceID (Primary Key), Name, Description, Availability, EstimatedCost
+Team
+
+Columns: TeamID (Primary Key), ProjectID (Foreign Key), UserID (Foreign Key), Role
+ER Diagram:
+
+sql
+Copy code
+               +-----------+
+               |   User    |
+               +-----------+
+               | UserID    |
+               | Name      |
+               | Email     |
+               | Password  |
+               +-----------+
+                    |
+                    |
+               +-----------+
+               |  Project  |
+               +-----------+
+               | ProjectID |
+               | Name      |
+               | Desc.     |
+               | StartDate |
+               | EndDate   |
+               +-----------+
+                    |
+                    |
+               +-----------+
+               |   Task    |
+               +-----------+
+               | TaskID    |
+               | ProjectID |
+               | Name      |
+               | Desc.     |
+               | Priority  |
+               | DueDate   |
+               | Status    |
+               +-----------+
+                    |
+                    |
+               +-----------+
+               | Resource  |
+               +-----------+
+               | ResourceID|
+               | Name      |
+               | Desc.     |
+               | Avail.    |
+               | EstCost   |
+               +-----------+
+                    |
+                    |
+               +-----------+
+               |   Team    |
+               +-----------+
+               | TeamID    |
+               | ProjectID |
+               | UserID    |
+               | Role      |
+               +-----------+
+This ER diagram represents the relationships between the User, Project, Task, Resource, and Team entities in the database.
+The primary keys (PK) and foreign keys (FK) establish the connections between the tables.
