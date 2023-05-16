@@ -1,0 +1,196 @@
+Software Requirements Specification (SRS) for Online Agriculture Center
+
+Introduction
+1.1 Purpose
+The purpose of the online agriculture center is to provide a platform for farmers, agricultural experts, and enthusiasts to access information, resources, and services related to agriculture. It aims to promote knowledge sharing, facilitate online marketplaces, and offer support for various agricultural activities.
+
+1.2 Scope
+The online agriculture center will include features such as information sharing, online marketplace, community forums, expert consultation, and agricultural resource management. It will cater to farmers, agricultural organizations, and individuals interested in agriculture.
+
+Functional Requirements
+2.1 User Registration and Authentication
+
+Users can register by providing their name, email address, and password.
+The system validates user input and ensures unique email addresses for each account.
+Users can log in to their accounts using their email address and password.
+The system authenticates user credentials and grants access to the system's features.
+2.2 Information Sharing
+
+Users can access articles, guides, tutorials, and videos related to various agricultural topics.
+The system allows users to search for specific information based on keywords, categories, or tags.
+Users can rate and provide feedback on the quality and usefulness of the shared content.
+2.3 Online Marketplace
+
+Farmers can list agricultural products for sale, such as crops, livestock, equipment, and seeds.
+Users can search for and browse available products based on categories, location, and price.
+The system facilitates communication between buyers and sellers to negotiate and finalize transactions.
+2.4 Community Forums
+
+Users can participate in community forums to ask questions, seek advice, and share their experiences.
+The system allows users to create and join discussions on specific agricultural topics.
+Users can post comments, replies, and engage in conversations with other community members.
+2.5 Expert Consultation
+
+Users can seek advice and consultation from agricultural experts or consultants.
+The system provides a platform for users to schedule appointments and communicate with experts.
+Users can rate and provide feedback on the consultation services received.
+2.6 Agricultural Resource Management
+
+Users can manage their agricultural resources, such as land, crops, livestock, and equipment.
+The system allows users to track resource details, including quantity, location, maintenance, and availability.
+Users can generate reports and receive notifications for resource management tasks.
+Non-functional Requirements
+3.1 Performance
+
+The system should handle concurrent user requests efficiently, ensuring fast response times and minimal downtime.
+It should support a large number of users, content, products, and interactions simultaneously.
+3.2 Security
+
+User authentication and data transmission should be secure to prevent unauthorized access and data breaches.
+The system should implement role-based access control to ensure appropriate permissions for different user roles.
+3.3 User Interface
+
+The user interface should be intuitive, user-friendly, and responsive across different devices and screen sizes.
+It should provide a seamless and efficient user experience for accessing information, engaging in marketplaces, and participating in forums.
+3.4 Reliability
+
+The system should be reliable, ensuring data integrity, availability, and backup mechanisms to prevent data loss.
+3.5 Scalability
+
+The system should be designed to handle future growth in terms of user base, content, transactions, and system usage.
+It should be scalable to accommodate increasing demands and additional features.
+Business Entities:
+
+User
+
+Attributes: UserID, Name, Email, Password
+Article
+
+Attributes: ArticleID, Title, Content, Category, Tags, Author, PublishDate
+Product
+
+Attributes: ProductID, Title, Description, Category, Price, Quantity, SellerID, Location
+Comment
+
+Attributes: CommentID
+, ArticleID, UserID, Content, PublishDate
+
+Expert
+
+Attributes: ExpertID, Name, Email, Specialization, Bio
+Appointment
+
+Attributes: AppointmentID, ExpertID, UserID, Date, Time, Status
+Resource
+
+Attributes: ResourceID, UserID, Name, Type, Quantity, Location, Availability
+MySQL Database Tables:
+
+User
+
+Columns: UserID (Primary Key), Name, Email, Password
+Article
+
+Columns: ArticleID (Primary Key), Title, Content, Category, Tags, Author, PublishDate
+Product
+
+Columns: ProductID (Primary Key), Title, Description, Category, Price, Quantity, SellerID (Foreign Key), Location
+Comment
+
+Columns: CommentID (Primary Key), ArticleID (Foreign Key), UserID (Foreign Key), Content, PublishDate
+Expert
+
+Columns: ExpertID (Primary Key), Name, Email, Specialization, Bio
+Appointment
+
+Columns: AppointmentID (Primary Key), ExpertID (Foreign Key), UserID (Foreign Key), Date, Time, Status
+Resource
+
+Columns: ResourceID (Primary Key), UserID (Foreign Key), Name, Type, Quantity, Location, Availability
+ER Diagram:
+
+sql
+Copy code
+               +-----------+
+               |   User    |
+               +-----------+
+               | UserID    |
+               | Name      |
+               | Email     |
+               | Password  |
+               +-----------+
+                    |
+                    |
+               +-----------+
+               |  Article  |
+               +-----------+
+               | ArticleID |
+               | Title     |
+               | Content   |
+               | Category  |
+               | Tags      |
+               | Author    |
+               | PublishDate|
+               +-----------+
+                    |
+                    |
+               +-----------+
+               |  Product  |
+               +-----------+
+               | ProductID |
+               | Title     |
+               | Desc.     |
+               | Category  |
+               | Price     |
+               | Quantity  |
+               | SellerID  |
+               | Location  |
+               +-----------+
+                    |
+                    |
+               +-----------+
+               |  Comment  |
+               +-----------+
+               | CommentID |
+               | ArticleID |
+               | UserID    |
+               | Content   |
+               | PublishDate|
+               +-----------+
+                    |
+                    |
+               +-----------+
+               |   Expert  |
+               +-----------+
+               | ExpertID  |
+               | Name      |
+               | Email     |
+               | Special.  |
+               | Bio       |
+               +-----------+
+                    |
+                    |
+               +-----------+
+               |Appointment|
+               +-----------+
+               |AppointmentID|
+               |ExpertID   |
+               |UserID     |
+               |Date       |
+               |Time       |
+               |Status     |
+               +-----------+
+                    |
+                    |
+               +-----------+
+               |  Resource |
+               +-----------+
+               | ResourceID|
+               | UserID    |
+               | Name      |
+               | Type      |
+               | Quantity  |
+               | Location  |
+               | Availability|
+               +-----------+
+This ER diagram represents the relationships between the User, Article, Product, Comment, Expert, Appointment, and Resource entities in the database. The primary keys (PK) and foreign keys (FK) establish the connections between the tables.

@@ -1,0 +1,172 @@
+
+Software Requirements Specification (SRS) for Online Employee Recruitment System
+
+Introduction
+1.1 Purpose
+The purpose of the online employee recruitment system is to provide a platform for organizations to manage their recruitment 
+processes effectively. It allows employers to post job vacancies, receive applications from candidates, evaluate applicants, 
+and hire suitable employees.
+
+1.2 Scope
+The online employee recruitment system will include features such as job posting, candidate application management, resume parsing,
+candidate evaluation, interview scheduling, and hiring decision-making. It will cater to both employers and job seekers, facilitating 
+a streamlined and efficient recruitment process.
+
+Functional Requirements
+2.1 Employer Registration and Authentication
+
+Employers can create an account by providing their company information, contact details, and login credentials.
+The system validates user input and ensures unique email addresses for each employer account.
+Employers can log in to their accounts using their email address and password.
+The system authenticates employer credentials and grants access to the system's features.
+2.2 Job Posting
+
+Employers can post job vacancies, providing details such as job title, description, requirements, and location.
+The system assigns a unique identifier (Job ID) to each job posting for easy reference.
+Employers can set application deadlines and manage the status of job postings.
+2.3 Candidate Application Management
+
+Job seekers can create user accounts and submit applications for specific job vacancies.
+The system captures candidate information, including personal details, educational background, and work experience.
+Employers can view and manage candidate applications, including shortlisting candidates for further evaluation.
+2.4 Resume Parsing
+
+The system utilizes resume parsing techniques to extract relevant information from candidate resumes.
+It automatically populates candidate profiles with parsed data, simplifying the evaluation process.
+2.5 Candidate Evaluation
+
+Employers can evaluate candidate profiles based on job requirements, qualifications, and experience.
+The system may include assessment tools or questionnaires to gather additional information from candidates.
+Employers can rate and provide feedback on candidate applications for reference during the hiring process.
+2.6 Interview Scheduling
+
+Employers can schedule interviews with shortlisted candidates, specifying date, time, and mode of the interview 
+(in-person, phone, or video).
+The system can send automated interview invitations and reminders to candidates.
+2.7 Hiring Decision-making
+
+Employers can collaborate with team members to discuss and make hiring decisions.
+The system provides tools for employers to review candidate profiles, interview feedback, and other relevant information.
+Employers can communicate the final decision to candidates and extend job offers to successful applicants.
+Non-functional Requirements
+3.1 Performance
+
+The system should handle concurrent user requests efficiently, ensuring fast response times and minimal downtime.
+It should support a large number of job postings, candidate applications, and user interactions simultaneously.
+3.2 Security
+
+User authentication and data transmission should be secure to prevent unauthorized access and data breaches.
+The system should implement role-based access control to ensure appropriate permissions for different user roles.
+3.3 User Interface
+
+The user interface should be intuitive, user-friendly, and responsive across different devices and screen sizes.
+It should provide a seamless and efficient user experience for employers and job seekers.
+3.4 Reliability
+
+The system should be reliable, ensuring data integrity, availability, and backup mechanisms to prevent data loss.
+3.5 Scalability
+
+The system should be designed to handle future growth in terms of user base, job postings, candidate applications, and system usage.
+It should be scalable to accommodate increasing demands and additional features.
+Business Entities:
+
+Employer
+
+Attributes: EmployerID, CompanyName, Email, Password, ContactNumber
+Job Posting
+
+Attributes: JobID
+, EmployerID, Title, Description, Requirements, Location, ApplicationDeadline
+
+Candidate
+
+Attributes: CandidateID, Name, Email, Password, ContactNumber, Education, Experience, Resume
+Application
+
+Attributes: ApplicationID, JobID, CandidateID, SubmissionDate, Status
+Interview
+
+Attributes: InterviewID, JobID, CandidateID, Date, Time, Mode, Status
+MySQL Database Tables:
+
+Employer
+
+Columns: EmployerID (Primary Key), CompanyName, Email, Password, ContactNumber
+JobPosting
+
+Columns: JobID (Primary Key), EmployerID (Foreign Key), Title, Description, Requirements, Location, ApplicationDeadline
+Candidate
+
+Columns: CandidateID (Primary Key), Name, Email, Password, ContactNumber, Education, Experience, Resume
+Application
+
+Columns: ApplicationID (Primary Key), JobID (Foreign Key), CandidateID (Foreign Key), SubmissionDate, Status
+Interview
+
+Columns: InterviewID (Primary Key), JobID (Foreign Key), CandidateID (Foreign Key), Date, Time, Mode, Status
+ER Diagram:
+
+sql
+Copy code
+               +-----------+
+               |  Employer |
+               +-----------+
+               | EmployerID|
+               | CompanyName|
+               | Email     |
+               | Password  |
+               | ContactNo.|
+               +-----------+
+                    |
+                    |
+               +-----------+
+               | JobPosting|
+               +-----------+
+               | JobID     |
+               | EmployerID|
+               | Title     |
+               | Desc.     |
+               | Requirements|
+               | Location  |
+               | Deadline  |
+               +-----------+
+                    |
+                    |
+               +-----------+
+               | Candidate |
+               +-----------+
+               | CandidateID|
+               | Name      |
+               | Email     |
+               | Password  |
+               | ContactNo.|
+               | Education |
+               | Experience|
+               | Resume    |
+               +-----------+
+                    |
+                    |
+               +-----------+
+               | Application|
+               +-----------+
+               | ApplicationID|
+               | JobID     |
+               | CandidateID|
+               | SubmissionDate|
+               | Status    |
+               +-----------+
+                    |
+                    |
+               +-----------+
+               | Interview |
+               +-----------+
+               | InterviewID|
+               | JobID     |
+               | CandidateID|
+               | Date      |
+               | Time      |
+               | Mode      |
+               | Status    |
+               +-----------+
+This ER diagram represents the relationships between the Employer, JobPosting, Candidate, Application, and Interview entities in 
+the database. The primary keys (PK) and foreign keys (FK) establish the connections between the tables.
